@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily News</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+    <form method="POST" action="/nws">
+        {% csrf_token %}
+        <div>
+            <br>
+            <p>
+                <h3>Enter News</h3>
+            </p>
+            <div>
+                <p>News Title:</p>{{ form.newsTitle }}
+            </div>
+            <div>
+                <p>News Details::</p>{{ form.newsDetails }}
+            </div>
+            <!-- <div>
+                <p>Employee Email:</p>{{ form.eemail }}
+            </div>
+            <div>
+                <p>Employee contact:</p>{{ form.econtact }}
+            </div>
+            <div> -->
+                <br>
+                <button type="submit">Submit</button>
+            </div>
+        </div>
+    </form>
+</body>
+
+</html>
