@@ -11,7 +11,7 @@
 </head>
 
 <body>
-    <form method="POST" action="/update/{{news.id}}">
+    <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         <div>
             <br>
@@ -31,18 +31,13 @@
                 <input type="text" name="newsDetails" value="{{news.newsDetails}}" />
             </div>
         </div>
-        <!-- <div>
-            <p>Employee Email :</p>
-            <div>
-                <input type="email" name="eemail" value="{{employee.eemail}}" />
-            </div>
+        <div class="form-group">
+            <label for="image">Image</label>
+            {% if news.image %}
+                <img src="{{ news.image.url }}" class="img-thumbnail" width="50">
+            {% endif %}
+            <input type="file" class="form-control-file" id="image" name="image">
         </div>
-        <div>
-            <p>Employee Contact:</p>
-            <div>
-                <input type="text" name="econtact" value="{{employee.econtact}}" />
-            </div>
-        </div> -->
         <div>
             <br>
             <button type="submit">Update</button>

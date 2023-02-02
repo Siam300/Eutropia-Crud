@@ -6,7 +6,7 @@ from django.shortcuts import redirect
 
 def nws(request):
     if request.method== "POST":
-        form=Newsform(request.POST)
+        form=Newsform(request.POST, request.FILES)
         if form.is_valid():
             try:
                 form.save()
@@ -16,6 +16,9 @@ def nws(request):
     else: 
         form = Newsform()
     return render(request, 'index.html', {'form':form})
+
+
+
 
 def show(request):
     news= dailyNews.objects.all()
@@ -27,7 +30,7 @@ def edit(request,id):
 
 def update(request,id):
     news= dailyNews.objects.get(id = id)
-    form=Newsform(request.POST,instance=news)
+    form=Newsform(request.POST,request.FILES,instance=news)
     if form.is_valid():  
         form.save()  
         return redirect("/show")  

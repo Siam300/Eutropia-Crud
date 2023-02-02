@@ -11,31 +11,23 @@
 </head>
 
 <body>
-    <table>
-        <thead>
-            <tr>
-                <th>Daily News</th>
-                <th>News Title</th>
-                <th>News Details</th>
-                <!-- <th>Employee Contact</th>
-                <th>Action</th> -->
-            </tr>
-        </thead>
-        <tbody>
+
+    <h1>Daily News</h1>
+        
+        
             {% for news in news %}
-            <tr>
-                <td>{{ news.newsTitle }}</td>
-                <td>{{news.newsDetails }}</td>
-                <!-- <td>{{employee.eemail }}</td>
-                <td>{{employee.econtact }}</td> -->
-                <td>
-                    <a href="/edit/{{news.id }}">Edit</a>
+                
+                <h2>News Title: {{ news.newsTitle }}</h2>
+                <p>News Details: {{news.newsDetails }}</p>
+                <img src="{{ news.image.url }}" width="150" height="150">
+                
+                    <a href="/update/{{news.id }}">Edit</a>
                     <a href="/delete/{{news.id}}">Delete</a>
-                </td>
-            </tr>
+                
+       
             {% endfor %}
-        </tbody>
-    </table>
+        
+    
     <br>
     <br>
     <button><a style="color:rgb(0, 0, 0);" href="/nws">Create News</a></button>
